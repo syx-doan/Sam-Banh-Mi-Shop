@@ -28,7 +28,7 @@ const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)'
 let pointerControls;
 
 function applyBreadSprite(element, ingredients, burnt = false) {
-  if (burnt) { element.dataset.mask = 'burnt'; element.style.backgroundImage = "url('/assets/bread-burnt.webp')"; element.style.backgroundPosition = 'center'; element.style.backgroundSize = 'contain'; return; }
+  if (burnt) { element.dataset.mask = 'burnt'; element.style.backgroundImage = "url('./assets/bread-burnt.webp')"; element.style.backgroundPosition = 'center'; element.style.backgroundSize = 'contain'; return; }
   element.style.backgroundSize = '400% 400%';
   const sprite = breadSprite(ingredients);
   if (element.dataset.mask === String(sprite.mask)) return;

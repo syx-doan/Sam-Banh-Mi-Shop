@@ -13,7 +13,7 @@ export function breadSprite(ingredients) {
     sheet: Math.floor(mask / 16) * 16,
     column: mask % 4,
     row: Math.floor((mask % 16) / 4),
-    url: `/assets/bread-${Math.floor(mask / 16) * 16}.webp`,
+    url: `./assets/bread-${Math.floor(mask / 16) * 16}.webp`,
   };
 }
 

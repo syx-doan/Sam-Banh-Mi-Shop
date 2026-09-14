@@ -55,7 +55,7 @@ export function installPointerControls({ surface, game, blocked, actions }) {
       const sprite = breadSprite(game.breads[current.index]);
       ghost.style.backgroundImage = `url('${sprite.url}')`;
       ghost.style.backgroundPosition = `${sprite.column * 100 / 3}% ${sprite.row * 100 / 3}%`;
-      if (game.burnt[current.index]) { ghost.style.backgroundImage = "url('/assets/bread-burnt.webp')"; ghost.style.backgroundSize = 'contain'; ghost.style.backgroundPosition = 'center'; }
+      if (game.burnt[current.index]) { ghost.style.backgroundImage = "url('./assets/bread-burnt.webp')"; ghost.style.backgroundSize = 'contain'; ghost.style.backgroundPosition = 'center'; }
       actions.selectBread(current.index);
     }
     current.size = current.type === 'ingredient' ? 53 : 115;
