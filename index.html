@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#184d3c">
+  <meta name="description" content="Run a tiny bánh mì shop. Match customer orders, serve happy guests and upgrade your shop with mouse, keyboard or touch.">
+  <title>Tiny Bánh Mì Shop · Let’s cook!</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23184d3c'/%3E%3Cellipse cx='32' cy='32' rx='24' ry='13' transform='rotate(-30 32 32)' fill='%23f4b74c'/%3E%3Cpath d='M20 28l7 6m1-13 7 6m1-13 7 6' stroke='%23fff0c4' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/v2.css?v=7">
+  <link rel="preload" as="image" href="/assets/background.webp">
+  <link rel="preload" as="image" href="/assets/customer-cast.webp">
+  <link rel="preload" as="image" href="/assets/bread-0.webp">
+  <link rel="preload" as="image" href="/assets/bread-16.webp">
+  <link rel="preload" as="image" href="/assets/bread-32.webp">
+  <link rel="preload" as="image" href="/assets/bread-48.webp">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-icon food food-7" aria-hidden="true"></span><div><span class="brand-eyebrow" id="brand-eyebrow">A LITTLE CORNER OF VIETNAM</span><h1 id="brand-title">Tiny Bánh Mì Shop</h1></div></div>
+      <div class="topbar-actions">
+        <div class="wallet" id="wallet-wrap" aria-label="Coins in wallet"><span class="coin" aria-hidden="true"></span><strong id="wallet">0</strong><span class="wallet-unit" id="wallet-unit">coins</span></div>
+        <button class="language-button" id="language-button" aria-label="Switch to Vietnamese" title="Switch language"><span id="language-en">EN</span><span aria-hidden="true">/</span><span id="language-vi">VI</span></button>
+        <button class="icon-button" id="sound-button" aria-label="Mute sound" title="Mute sound"></button>
+        <button class="icon-button" id="help-button" aria-label="How to play" title="How to play">?</button>
+        <button class="icon-button" id="pause-button" aria-label="Pause" title="Pause (P)"></button>
+      </div>
+    </header>
+
+    <main class="game-layout">
+      <section class="kitchen" id="kitchen" aria-label="Bánh mì kitchen">
+        <div class="scene">
+          <div class="awning" aria-hidden="true"></div>
+          <div class="scene-topline"><span class="open-sign" id="open-sign">KITCHEN READY</span><span class="shift-badge" id="scene-shift"> Morning shift</span><span class="combo-badge" id="combo-badge">Kitchen ready</span><span class="level-badge" id="level-badge">LEVEL 1</span></div>
+          <div class="customer-row" id="customers" aria-label="Customers"></div>
+          <div class="scene-bottom-shadow"></div>
+        </div>
+        <div class="ingredients-section">
+          <div class="section-label"><span id="fresh-label"><span class="tiny-spark"></span> FRESH INGREDIENTS</span><span class="desktop-note" id="desktop-note">Tap or drag onto bread <kbd>1</kbd>–<kbd>6</kbd></span><span class="touch-note" id="touch-note">Tap / drag to bread</span></div>
+          <div class="ingredients" id="ingredients" aria-label="Ingredients"></div>
+        </div>
+        <div class="worktop">
+          <div class="worktop-heading"><span id="worktop-label">SANDWICH STATION</span><span id="worktop-hint">Choose a sandwich to start</span></div>
+          <div class="bread-slots" id="bread-slots" aria-label="Three sandwiches in progress"></div>
+          <div class="worktop-actions"><button class="discard-button" id="discard-button" title="Reset selected sandwich (Backspace)"><span id="trash-icon"></span><span id="discard-label">Reset</span><kbd>⌫</kbd></button><button class="mobile-order" id="mobile-order"></button><div class="serve-hint" id="serve-hint">Follow the customer order</div><button class="serve-button" id="serve-button"><span id="serve-icon"></span><span id="serve-label">Choose customer</span><kbd>↵</kbd></button></div>
+          <p class="drag-instruction" id="drag-instruction">Tap a customer · Drag bread to deliver</p>
+        </div>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        <div class="celebration" id="celebration" aria-hidden="true"></div>
+      </section>
+
+      <aside class="game-sidebar" aria-label="Shift and recipe information">
+        <section class="shift-panel">
+          <div class="shift-panel-top"><span class="day-label" id="day-label">DAY 01</span><span class="shift-symbol" aria-hidden="true"></span></div>
+          <div class="shift-title-row"><h2 id="shift-title">A delicious morning!</h2><div class="timer" id="timer" aria-label="Time remaining">02:00</div></div>
+          <div class="goal-header"><span id="goal-label">Today's goal</span><strong id="goal-text">0 / 6 sandwiches</strong></div><div class="goal-track"><div id="goal-progress"></div></div>
+          <div class="shift-stats"><span><b id="earned">0</b> <span id="earned-label">coins earned</span></span><span><b id="missed">0</b> <span id="missed-label">customers left</span></span></div>
+          <button class="mobile-goals" id="mobile-goals"></button><div id="daily-objectives"></div><p id="save-status" class="save-status"></p><button class="start-button" id="start-button">Open shop <span></span></button>
+        </section>
+        <section class="recipe-panel" aria-label="Current order">
+          <div class="recipe-header"><span class="eyebrow" id="recipe-eyebrow">CURRENT ORDER</span><span class="order-key" id="recipe-key">Q</span></div>
+          <h2 id="recipe-name">Grilled pork bánh mì</h2><p class="recipe-owner" id="recipe-owner">For Minh · 25 coins</p>
+          <div id="recipe-list" class="recipe-list"></div>
+          <div class="recipe-tip" id="recipe-tip">The bread is ready. Add the order ingredients, then deliver it.</div>
+        </section>
+        <button class="upgrade-button" id="upgrade-button"><span class="upgrade-icon" id="upgrade-icon"></span><span><strong id="upgrade-label">Upgrade shop</strong><small id="upgrade-sub">More joy, more tips</small></span><span class="upgrade-arrow"></span></button>
+        <div class="keyboard-legend"><span><kbd>Q</kbd><kbd>W</kbd><kbd>E</kbd> <span id="customer-legend">Customers</span></span><span><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <span id="bread-legend">Sandwiches</span></span><span><kbd>1</kbd>–<kbd>6</kbd> <span id="ingredients-legend">Ingredients</span></span><span><kbd>↵</kbd> <span id="serve-legend">Deliver</span></span></div>
+      </aside>
+    </main>
+    <footer class="page-footer"><span id="footer-a">Hot bread. Happy customers.</span><span id="device-hint">Mouse &amp; keyboard <span class="footer-dot">·</span> Touch to play</span></footer>
+  </div>
+
+  <dialog id="game-dialog" aria-label="Bánh mì shop info"><div id="dialog-content"></div></dialog>
+  <script type="module" src="/game.js?v=7"></script>
+</body>
+</html>
